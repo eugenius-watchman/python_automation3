@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSS Professional YouTube Downloaer</title>
+    
+    <!--link external CSS file-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/yt.css')}}">
+
+    <!--font Awesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <!--maincontainer-->
+    <div class="container">  
+
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-download"></i>
+                <h1>BSS YouTube Downloader</h1>
+            </div>
+            <p class="subtitle">Download videos in high quality</p>
+        </header>
+
+        <!---main content-->
+        <main>
+            <!--download form-->
+            <div class="card download-card">
+                <h2><i class="fas fa-link"></i>Enter Video URL</h2>
+
+                <form id="downloadForm" class="download-form">
+                    <div class="form-group">
+                        <input type="url"
+                                id="videoUrl"
+                                placeholder="Enter your URL here..."
+                                required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-download"></i>Download
+                        </button>
+                    </div>
+
+                    <div class="options-grid">
+                        <!--quality selection-->
+                        <div class="option-group">
+                            <label for="quality">
+                                <i class="fas fa-sliders-h">Quality</i>
+                            </label>
+                            <select id="quality" class="form-control">
+                                <option value="highest">Highest (1080p)</option>
+                                <option value="720p">720p</option>
+                                <option value="480p">480p</option>
+                                <option value="360p">360p</option>
+                                <option value="lowest">Lowest</option>
+                            </select>
+                        </div>
+
+                        <!--Ouput filename-->
+                        <div class="option-group">
+                            <label for="outputName">
+                                <i class="fas fa-file">Custom Filename</i>
+                            </label>
+                            <input type="text"
+                                    id="outputName"
+                                    class="form-control"
+                                    placeholder="Optional download custom name">
+                        </div>
+                    </div>
+
+                    <!--additional options-->
+                    <div class="options-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="getInfo">
+                            <i class="fas fa-info-circle"></i> Get video info...
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <!-- video info section-->
+             <div id="videoInfo" class="card info-card" style="display: none;">
+                <h3><i class="fas fa-video"></i> Video Informtion</h3>
+                <div id="infoContent"></div>
+             </div>
+
+             <!--progress section-->
+             <div id="progressSection" class="card progress-card" style="display: ;">
+                <h3><i class="fas fa-spinner fa-spin"></i>Downloading...</h3>
+                    <div class="progress-container">
+                        <div id="progressBar" class="progress-bar" style="width:0%">
+                            <span id="prgressText">0%</span>
+                        </div>
+                    </div>
+                    <p id="statusMessage" class="status-message">Initialising</p>
+            </div>
+
+
+            <!---Statistics section-->
+            <div class="card stats-card">
+                <h3><i class="fas fa-chart-bar"></i>Download Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Downloads</span>
+                        <span id="totalDownloads" class="stats-value success">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Download Failed</span>
+                        <span id="failedDownloads" class="stats-value failed">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Success Rate</span>
+                        <span id="successRate" class="stats-value">0%</span>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <!--Footer-->
+        <footer class="footer">
+            <p>&copy; 2026 Binary Software Studios Gh. All rights reserved</p>
+            <p class="footer-links">
+                <a href="#" class="footer-link"><i class="fab fa-github"></i> Github</a>
+                <a href="#" class="footer-link"><i class="fas fa-envelope"></i></a>
+            </p>
+        </footer>
+
+    </div>
+
+    <!--JavaScript ...interacivity-->
+    <script src="{{url_for('static', filename='js/yt.js')}}"></script>
+    
+</body>
+</html>
